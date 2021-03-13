@@ -18,6 +18,10 @@ let db = [
     { '1': { Nome: 'Cliente 1', Idade: '20' } },
 ]
 
+app.get('/', (req, res) => {
+    
+}
+
 
 app.listen(21262, () => {
     console.log(`Express started at http://localhost:21262`)   
