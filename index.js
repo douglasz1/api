@@ -19,7 +19,7 @@ let db = [
 ]
 
 app.get('/', (req, res) => {
-    
+    return res.json(db)
 }
 
 
