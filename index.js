@@ -18,8 +18,20 @@ let db = [
     { '3': { Nome: 'Cliente 1', Idade: '20' } },
 ]
 
+// Buscar Dados
 app.get('/', (req, res) => {
     return res.json(db)
+})
+
+// Inserir Dados
+app.get('/add', (req, res) => {
+    const body = req.body
+
+    if(!body)
+        return res.status(400).end()
+    
+    db.push(body)
+    return res.json(body)
 })
 
 
