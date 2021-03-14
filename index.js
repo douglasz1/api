@@ -2,6 +2,7 @@ const express = require('express')
 const morgan = require('morgan')
 const cors = require('cors')
 const bodyParser = require('body-parser')
+const routes = require('./config/routes')
 
 
 const app = express()
@@ -10,29 +11,7 @@ app.use(morgan('dev'))
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(express.json())
 app.use(cors())
-
-
-let db = [
-    { '1': { Nome: 'Cliente 1', Idade: '20' } },
-    { '2': { Nome: 'Cliente 1', Idade: '20' } },
-    { '3': { Nome: 'Cliente 1', Idade: '20' } },
-]
-
-// Buscar Dados
-app.get('/', (req, res) => {
-    return res.json(db)
-})
-
-// Inserir Dados
-app.get('/add', (req, res) => {
-    const body = req.body
-
-    if(!body)
-        return res.status(400).end()
-    
-    db.push(body)
-    return res.json(body)
-})
+app.use(routes)
 
 
 app.listen(21262, () => {
